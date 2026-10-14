@@ -1,0 +1,21 @@
+---
+description: After making code changes, iterate senior-level review → fix until no new issues
+alwaysApply: true
+---
+
+# Self-Review Loop After Making Changes
+
+After implementing any non-trivial code change, enter a review-fix loop:
+
+1. Review your work with the scrutiny of a senior engineer
+2. If issues are found, fix them and go back to step 1
+3. Repeat until the review surfaces no new issues
+
+Apply this scrutiny at each pass:
+
+- Correctness: edge cases, race conditions, error paths
+- Signal/process semantics, exit codes, resource cleanup
+- Whether the change is complete end-to-end (e.g. config wired up, not just written)
+- Coordination dependencies (does this require another change to take effect?)
+
+If a potential fix involves a genuine trade-off (complexity vs. correctness, etc.), do not make it — describe the trade-off and let the user decide.

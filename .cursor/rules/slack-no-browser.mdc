@@ -1,0 +1,12 @@
+---
+description: Read Slack only through the Slack MCP. Never open a browser for a Slack URL.
+alwaysApply: true
+---
+
+# Slack — no browser
+
+Read Slack only with the Slack MCP tools (`slack_read_channel`, `slack_read_thread`, `slack_search_public_and_private`, and the other `slack_*` tools).
+
+Never open Chrome, Playwright, or any other browser to load a Slack URL. This includes an empty thread, a missing timestamp, a failed search, or a permalink the API did not return.
+
+If those tools do not return the message, say so and ask for a paste. Stop. Do not switch tools.

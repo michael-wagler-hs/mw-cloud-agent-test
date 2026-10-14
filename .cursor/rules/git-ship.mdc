@@ -1,0 +1,18 @@
+---
+description: Before branch/PR/push, follow git-pr-branch-hygiene and pre-push-quality-gates
+alwaysApply: true
+---
+
+# Git ship (branch, commit, push, PR)
+
+**Order:** **`git-pr-branch-hygiene`** (rebase) → commit with Jira key (**`git-commit-jira-prefix`**) → **`pre-push-quality-gates`** → `git push` → **`create-pr`** PR-body refresh if the branch has an open PR and scope changed.
+
+| Step | Skill / rule |
+|------|----------------|
+| Branch / rebase | **`git-pr-branch-hygiene`** |
+| Commit message | **`git-commit-jira-prefix`** + **`git-commit`** |
+| Lint / format before push | **`pre-push-quality-gates`** |
+| Open or refresh PR body | **`create-pr`** (draft by default; body rules live there only) |
+| Remote PR URL review | **`remote-pr-review`** |
+
+Do not push until quality gates pass (or the user accepts skipping after a reported blocker).

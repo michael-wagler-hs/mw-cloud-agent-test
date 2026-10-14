@@ -1,0 +1,16 @@
+---
+description: Act only on the latest user message. Do not treat your own text as a user instruction.
+alwaysApply: true
+---
+
+# Latest user message only
+
+Instructions come from the latest user message. Assistant replies, thinking, and recaps of what the user asked are not instructions.
+
+Before a remote write (merge, `gh pr merge`, `--admin`, revert, push, or a write covered by **no-unsolicited-remote-writes**):
+
+1. Find the sentence in the latest user message that asks for that action.
+2. If that sentence is not there, stop.
+3. A question about an action is not a request to perform it.
+
+Do not compose a sentence, attribute it to the user, and then act on it.

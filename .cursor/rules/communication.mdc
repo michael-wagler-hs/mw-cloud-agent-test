@@ -1,0 +1,26 @@
+---
+description: Proportional answers, code citations, prose quality
+alwaysApply: true
+---
+
+# Communication
+
+Keep final responses proportional to task complexity. Simple questions: a few sentences, often no headings.
+
+When the answer needs structure (summaries, reviews, investigations, plans, comparisons):
+
+- Start with one short lead (1–3 sentences).
+- Use at most **3** top-level sections, named for the task — not a fixed template.
+- Substance in each bullet; prefer prose bullets over tables unless comparing many similar items (~5+).
+
+**Code references:** use citation fences only — opening ``` on its own line, format `startLine:endLine:filepath`. Skip large irrelevant chunks with `...`.
+
+**Links and paths:** full URLs and paths; do not shorten. Avoid "§" in user-facing text.
+
+**Diagrams:** ASCII/terminal-friendly only — see **`terminal-friendly-diagrams`**. Do not use Mermaid unless the user asks.
+
+No engagement bait at the end.
+
+Reason about conversation history — the latest message inherits prior context; infer goal and constraints from the arc, not just the last line.
+
+Voice/grammar: **`caveman`** rule (default on). This file covers structure and citations only.

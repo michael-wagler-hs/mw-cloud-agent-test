@@ -1,0 +1,25 @@
+---
+description: Stop immediately when a task needs an MCP that is not connected; do not work around on first attempt
+alwaysApply: true
+---
+
+# Required MCP — Stop If Unavailable
+
+When the task **clearly depends** on a specific MCP server (Slack, Jira, PagerDuty, Developer Portal, Chrome DevTools, Jenkins, flaky-test-curator, Atlassian, etc.), check that the server is connected and its tools are available **before** doing substantial work.
+
+## If the MCP is missing or disconnected
+
+1. **Stop immediately.** Do not proceed with a workaround on the initial run.
+2. **Tell the user** which MCP is needed, what you intended to do with it, and that you are blocked until it is connected (or they approve an alternative).
+3. Wait for them to connect the MCP, fix auth, or explicitly say to proceed without it.
+
+Do **not** substitute guesses, stale memory, partial local files, or unrelated tools when the task obviously needs that MCP's live data or actions.
+
+## Exceptions — no stop required
+
+- **GitHub:** use `gh`. There is no GitHub MCP.
+- **User override:** If they say to try anyway without the MCP, proceed with whatever fallback they accept and say what you cannot verify or do.
+
+## Detecting unavailability
+
+Treat the MCP as unavailable when its tools are not in the session, calls fail with connection/auth/server errors, or the server is disabled in Cursor MCP settings.

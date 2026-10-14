@@ -1,0 +1,21 @@
+---
+description: Never write to any remote service without explicit user approval
+alwaysApply: true
+---
+
+# Remote Writes Require Approval
+
+**Slack** sends, schedules, and canvases: do not send unless the latest user message explicitly asks you to send that message to Slack. That message must name the channel or thread. Drafting the text in chat, or discussing what to reply, is not a send request. Do not infer a send from earlier turns.
+
+**Unconditional bans** (even if the user asks):
+
+- **GitHub comments and reviews** — issue/PR conversation comments, inline review comments, review replies, `gh pr comment`, `gh pr review`, `gh pr close --comment`, MCP `add_comment*` / `add_reply*` / `pull_request_review_write`. Never leave a GitHub comment. Draft it in chat; they post. A GitHub MCP comment or review is denied.
+- **Pull request merges** — `gh pr merge` (including a `gh` alias of it), a `pulls/.../merge` write, and `mergePullRequest` / `enablePullRequestAutoMerge`. The shell hook checks every agent command, including script files and `@file` bodies. A GitHub MCP tool that merges a pull request is denied too. Do not retry another way. Tell the user the hook blocked it.
+
+**Jira, other GitHub writes, Confluence, PagerDuty, or any other external mutate:** no remote writes unless the user explicitly asks for it. Do not infer permission from intent, usefulness, prior context, or a request to "review".
+
+Read-only (search, read, get, list) is fine without asking.
+
+Review requests are read-only by default. "Review this PR", "check this", "summarize", "what do you think", "prepare comments" → chat only.
+
+When a non-banned write would help, show the exact target and body in chat, then wait. For Slack, wait until the latest user message asks you to send it.

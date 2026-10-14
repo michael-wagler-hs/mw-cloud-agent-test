@@ -1,0 +1,25 @@
+---
+description: Use terminal-renderable diagrams in chat, not Mermaid
+alwaysApply: true
+---
+
+# Terminal-friendly diagrams
+
+The user often reads replies in a **CLI** that cannot render Mermaid or other rich diagram formats.
+
+When a diagram would help, use ASCII/box-drawing in a fenced code block, arrow flows (`Client → API → DB`), or indented trees. Do **not** use Mermaid unless the user explicitly asks for it.
+
+For trivial flows (two or three steps), plain prose or one arrow line is enough.
+
+**Good**
+
+```
+Client → API → DB
+```
+
+**Bad** — Mermaid in CLI
+
+```mermaid
+flowchart LR
+  Client --> API --> DB
+```

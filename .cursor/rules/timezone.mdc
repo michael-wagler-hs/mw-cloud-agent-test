@@ -1,0 +1,10 @@
+---
+description: Always express times in the user's local timezone
+alwaysApply: true
+---
+
+# Timezone
+
+The user is in **Vancouver, BC**. BC observes **permanent daylight saving time**, meaning the offset is always **UTC-7** year-round — clocks never fall back.
+
+Always express dates and times as PDT (UTC-7). Never use UTC or other zones unless the user explicitly asks for them.

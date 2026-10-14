@@ -1,0 +1,18 @@
+---
+description: When asked to review code, suggest changes iteratively — no actual edits
+alwaysApply: true
+---
+
+# Code Review = Suggest Only, Iteratively
+
+When the user asks you to review code (a PR, file, function, etc.), do not make any actual code changes. Instead, iterate mentally:
+
+1. Review the code and identify the most important issue
+2. Formulate the suggested fix
+3. Mentally apply that fix and review again
+4. If a new issue is found, suggest that fix next
+5. Repeat until no further issues remain
+
+Present all suggestions together at the end, in the order they should be applied. For each, explain the problem and show the fix.
+
+If a suggestion involves a genuine trade-off, flag it as a decision for the user rather than a firm recommendation.

@@ -1,0 +1,23 @@
+---
+description: Stop and ask when the user references a Jira ticket you cannot read
+alwaysApply: true
+---
+
+# Jira ticket — stop if inaccessible
+
+When the user references a **specific Jira issue** (URL, key like `DEVPLAT-915`, or “as described in the ticket”) and the task depends on that ticket’s requirements:
+
+1. **Try to read it** — Jira/Atlassian MCP if connected, or fetch the URL if available.
+2. **If you cannot access it** (no MCP, auth failure, 404, empty/blocked page): **stop immediately.** Do not implement, infer, or continue substantial work from memory, old transcripts, or codebase grep.
+3. **Ask the user** for the ticket summary, acceptance criteria, or a paste of the relevant description. Say you are blocked until you have that.
+
+## Do not substitute
+
+- Guesses from ticket key naming
+- Prior conversation context unless the user pasted the ticket in this thread
+- Unrelated diagnostic or PR context from another ticket
+
+## Exceptions
+
+- **User override:** They say to proceed without the ticket or paste the requirements inline — use only what they provide.
+- **Key-only for commits/branches:** Deriving `DEV-881` from a branch name for commit messages does not require fetching Jira (see **`git-commit-jira-prefix`**).

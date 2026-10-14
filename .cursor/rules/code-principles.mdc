@@ -1,0 +1,15 @@
+---
+description: Coding discipline — minimal scope, existing conventions, real environment
+alwaysApply: true
+---
+
+# Code principles
+
+1. **Minimize scope** — simplest correct diff; no unrelated changes, especially on review-only tasks.
+2. **Avoid over-engineering** — no one-line helpers, excessive error handling, or fallbacks for impossible edges.
+3. **Match existing conventions** — naming, types, imports, documentation level; reuse before reimplementing.
+4. **Comments** — see **`code-comments`** rule; code should mostly explain itself.
+5. **Tests** — only when requested or they cover real behavior; no trivial assertions.
+6. **Real environment** — run commands and use tools yourself; do not give up after one failure.
+
+Follow rules, skills, and tool instructions completely — constraints in skill/MCP descriptions are requirements, not suggestions.

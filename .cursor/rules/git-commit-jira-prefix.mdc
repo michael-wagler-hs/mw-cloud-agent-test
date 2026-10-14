@@ -1,0 +1,16 @@
+---
+description: Git commit messages must start with the Jira ticket key from the branch name
+alwaysApply: true
+---
+
+# Git commit messages — Jira prefix
+
+When proposing or writing a `git commit` message (including `-m`):
+
+1. **First token** is the Jira issue key (e.g. `DE-1234`), then a space and summary. No `fix:` before the key unless the team wants it after the key.
+2. **Derive the key** from the branch name (`DE-1234` or `DE-1234-fix-something` — use the leading key only, not the suffix). Pattern: `^[A-Z][A-Z0-9]+-\d+`.
+3. **On default branch** (`master` / `main`): do not guess the ticket. Ask for a branch name with a Jira key, `git switch -c` to it, then commit.
+4. **Commit only when the user asks** — do not commit unprompted follow-up work. For the full commit workflow, use the Hootsuite **`git-commit`** plugin skill.
+5. **Commit before push — always.** Stage → commit (with ticket key) → push. Never push to create a remote branch and commit afterward.
+
+Format and examples: **`git-commit`** plugin skill and **`git-naming`** plugin skill.

@@ -1,0 +1,18 @@
+---
+description: Never babysit a PR unless the user literally says babysit
+alwaysApply: true
+---
+
+# Babysit Only When Explicitly Requested
+
+Do **not** babysit a PR, watch CI in a loop, run the babysit/Bugbot-addon skills, or keep fixing CI/Bugbot/review threads until merge-ready — unless the user's **latest** message contains the literal word **`babysit`**.
+
+Do not infer babysit from: push, create the PR, check CI, status, merge-ready, Bugbot, review, or finishing a related task. After the asked work is done, **stop** — no follow-on babysit without a new message that says `babysit`.
+
+Allowed (needs `babysit` in that message):
+
+- `babysit`
+- `babysit this PR`
+- `/babysit`
+
+One-shot read-only status (`gh pr checks`, “is CI green?”) is fine without `babysit`. Continuous watch/fix loops are not.

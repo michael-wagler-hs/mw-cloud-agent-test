@@ -1,0 +1,51 @@
+---
+description: Minimal comments/docs; no chat residue or "A, not B" arguing-back prose
+alwaysApply: true
+---
+
+# Comments and docs
+
+Prefer no comment over a redundant one. When a comment or doc note is needed, make it as short as possible.
+
+Only write about: non-obvious intent, trade-offs, or constraints the code/docs cannot express alone.
+
+Never write about: what the code does, parameter names, or anything immediately visible.
+
+Applies to: inline comments, commit messages when they are explanatory asides, README/AGENTS/docs you generate or edit, rule/skill prose, and PR body text.
+
+## No conversational residue
+
+Never leave residue of an AI session. Usually subtle — directives like "do NOT do X here", "always call this before Y", or "ensure Z" that came from chat instructions rather than real constraints. Ask: would a developer who never saw the chat write this? If not, omit it.
+
+```go
+// BAD
+// Read the body and restore it so it can be forwarded
+body, _ := io.ReadAll(r.Body)
+r.Body = io.NopCloser(bytes.NewReader(body))
+
+// GOOD — one short phrase on the non-obvious constraint
+// Restore before returning so a partial read never leaves the body drained.
+r.Body = io.NopCloser(bytes.NewReader(body))
+```
+
+## No arguing-back style
+
+State the chosen fact. Do not rebuff a discarded alternative as if answering an argument.
+
+Avoid `A, not B` / `X (not Y)` when B/Y only exists because someone (or the model) considered it in chat.
+
+```markdown
+<!-- BAD — arguing back -->
+Routing method: Traefik, not OpenAPI `servers`.
+Use vault path (not local Docker) for day-to-day.
+
+<!-- GOOD — state the choice -->
+Routing method: Traefik.
+Day-to-day: vault path (`make run`).
+```
+
+Contrast is fine only when both options are real, documented choices a reader must pick between (e.g. a comparison table of supported approaches).
+
+## Rules, AGENTS, and other instructions
+
+Same idea: state what to do. If a command or requirement is already explicit, do not add lines comparing it to alternatives or justifying the choice—add prose only when it prevents a likely mistake.
